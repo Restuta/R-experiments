@@ -1,0 +1,20 @@
+x <- (
+  runif(n=100000, min=0, max=1) 
+  + runif(n=10000, min=0, max=1)
+  + runif(n=10000, min=0, max=1)
+  + runif(n=10000, min=0, max=1)
+  + runif(n=10000, min=0, max=1)
+  ) 
+h<-hist(x, breaks=2000, col="lightblue") 
+xfit<-seq(min(x), max(x), length=60) 
+yfit<-dnorm(xfit, mean=mean(x), sd=sd(x)) 
+yfit <- yfit * diff(h$mids[1:2]) * length(x) 
+lines(xfit, yfit, col="blue", lwd=2)
+
+# x <- rnorm(n=100000, m=1, sd=1) 
+# h<-hist(x, breaks=2000, col="lightblue", xlab="Miles Per Gallon", 
+#         main="Histogram with Normal Curve") 
+# xfit<-seq(min(x), max(x), length=60) 
+# yfit<-dnorm(xfit, mean=mean(x), sd=sd(x)) 
+# yfit <- yfit * diff(h$mids[1:2]) * length(x) 
+# lines(xfit, yfit, col="blue", lwd=2)
